@@ -183,7 +183,7 @@ AIDebugging_btp/
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/AIDebugging_btp.git
+   git clone https://github.com/tanmay-1620/Intent-Aware-Multi-Agent-RAG-Debugging-Assistant
    cd AIDebugging_btp
    ```
 
