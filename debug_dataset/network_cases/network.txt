@@ -1,0 +1,5 @@
+DNS_PROBE_FINISHED_NO_INTERNET
+No internet connection available
+
+ERR_CONNECTION_TIMED_OUT
+Server took too long to respond

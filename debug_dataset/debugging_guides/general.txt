@@ -1,0 +1,8 @@
+How to debug an application:
+
+1. Read error message carefully
+2. Identify error type (frontend/backend/system)
+3. Check logs
+4. Reproduce issue
+5. Isolate root cause
+6. Apply fix step-by-step

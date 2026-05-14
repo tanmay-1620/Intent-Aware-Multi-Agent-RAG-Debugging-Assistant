@@ -1,0 +1,2 @@
+npm ERR! peer dependency conflict detected
+React requires version 18 but 16 installed

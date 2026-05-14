@@ -1,0 +1,648 @@
+3/22/26, 9:29 PM Quick Start — React
+
+LEARN REACT > {@ Copy page
+
+Quick Start
+
+Welcome to the React documentation! This page will give you an
+introduction to 80% of the React concepts that you will use ona
+daily basis.
+
+You will learn
+
+¢ How to create and nest components
+
+¢ How to add markup and styles
+
+e¢ How to display data
+
+¢ How to render conditions and lists
+
+¢ How to respond to events and update the screen
+
+e How to share data between components
+
+Creating and nesting components
+
+React apps are made out of components. A component is a piece of the UI (user
+interface) that has its own logic and appearance. A component can be as small
+
+as a button, or as large as an entire page.
+
+React components are JavaScript functions that return markup:
+
+DD
+
+function MyButton() {
+
+= Keb vis. Q CC ®& OO
+5 UG
+
+https://react.dev/learn 1/18
+3/22/26, 9:29 PM Quick Start — React
+} 4
+
+Now that you’ve declared MyButton, you can nest it into another component:
+
+export default function MyApp() {
+return (
+<div>
+<hl>Welcome to my app</hi>
+<MyButton />
+</div>
+)3
+
+Notice that <MyButton /> starts witha capital letter. That’s how you know it’s a
+React component. React component names must always start with a capital
+
+letter, while HTML tags must be lowercase.
+
+Have a look at the result:
+
+App.js 4 Download © X F
+4
+
+1 function MyButton() f{
+
+2 return (
+
+3 <button>
+
+4 I'm a button
+
+5 </button>
+
+6 )3
+
+7
+
+8
+
+9
+
+export default function MyApp() f
+10 return (
+11 <div>
+12 <hl>Welcome to my app</hl>
+
+v Show more
+
+https://react.dev/learn 2/18
+3/22/26, 9:29 PM Quick Start — React
+
+Welcome to my app
+
+I'm a button
+
+The export default keywords specify the main component in the file. If you’re
+not familiar with some piece of JavaScript syntax, MDN and javascript.info have
+
+great references.
+
+Writing markup with JSX
+
+The markup syntax you’ve seen above is called JSX. It is optional, but most
+React projects use JSX for its convenience. All of the tools we recommend for
+
+local development support JSX out of the box.
+
+JSX is stricter than HTML. You have to close tags like <br />. Your component
+also can’t return multiple JSX tags. You have to wrap them into a shared parent,
+
+like a <div>...</div> oranempty <>...</> wrapper:
+
+>
+
+function AboutPage() {
+return (
+<>
+<h1>About</hi>
+<p>Hello there.<br />How do you do?</p>
+
+https://react.dev/learn 3/18
+3/22/26, 9:29 PM Quick Start — React
+</>
+
+If you have alot of HTML to port to JSX, you can use an online converter.
+
+Adding styles
+
+In React, you specify a CSS class with className. It works the same way as the
+
+HTML class attribute:
+
+<img className="avatar" />
+
+Then you write the CSS rules for it in a separate CSS file:
+
+/*x In your CSS x/
+-avatar f{
+
+border-radius: 50%}
+
+React does not prescribe how you add CSS files. In the simplest case, you’ll add
+a <lLink> tag to your HTML. If you use a build tool or a framework, consult its
+
+documentation to learn how to add a CSS file to your project.
+
+Displaying data
+
+JSX lets you put markup into JavaScript. Curly braces let you “escape back”
+into JavaScript so that you can embed some variable from your code and
+
+display it to the user. For example, this will display user.name:
+
+https://react.dev/learn 4/18
+3/22/26, 9:29 PM Quick Start — React
+
+return (
+<hi>
+{user.name}
+</hi>
+
+)5
+
+You can also “escape into JavaScript” from JSX attributes, but you have to use
+curly braces instead of quotes. For example, className="avatar" passes the
+"avatar" string as the CSS class, but src={user.imageUrl} reads the
+JavaScript user. imageUrl variable value, and then passes that value as the
+
+src attribute:
+
+return (
+<img
+className="avatar"
+src={user. imageUrl}
+/>
+)3
+
+You can put more complex expressions inside the JSX curly braces too, for
+
+example, string concatenation:
+
+App.js “Download © X F
+A
+const user = {
+name: 'Hedy Lamarr',
+jimageUrl: 'https://i.imgur.com/yXOvdOSs.jpg',
+imageSize: 90,
+
+3
+
+export default function Profile() {
+return (
+<>
+
+<hi>{user.name}</h1>
+
+https://react.dev/learn 5/18
+3/22/26, 9:29 PM Quick Start — React
+
+<img
+
+DD
+
+claccNama="avatarl
+
+v Show more
+
+In the above example, style={{}} is not a special syntax, but aregular {}
+object inside the style={ } JSX curly braces. You can use the style attribute
+
+when your styles depend on JavaScript variables.
+
+Conditional rendering
+
+In React, there is no special syntax for writing conditions. Instead, you'll use the
+same techniques as you use when writing regular JavaScript code. For example,
+
+you can use an if statement to conditionally include JSX:
+
+>
+
+let content;
+if (isLoggedin) {
+
+content = <AdminPanel />3
+} else {
+
+content = <LoginForm />3
+
+}
+
+https://react.dev/learn 6/18
+3/22/26, 9:29 PM Quick Start — React
+return ( A
+<div>
+{content}
+</div>
+
+)3
+
+If you prefer more compact code, you can use the conditional ? operator. Unlike
+
+if , it works inside JSX:
+
+<div>
+{isLoggedIn ? (
+<AdminPanel />
+d+ ¢
+<LoginForm />
+
+)}
+</div>
+
+When you don’t need the else branch, you can also use a shorter logical &&
+
+syntax:
+
+<div>
+{isLoggedIn && <AdminPanel />}
+</div>
+
+All of these approaches also work for conditionally specifying attributes. If
+you’re unfamiliar with some of this JavaScript syntax, you can start by always
+
+using if...else.
+
+Rendering lists
+
+You will rely on JavaScript features like for loop and the array map() function
+
+to render lists of components.
+
+https://react.dev/learn 7/18
+3/22/26, 9:29 PM Quick Start — React
+
+For example, let’s say you have an array of products:
+
+const products = [
+{ title: 'Cabbage', id: 1 },
+{ title: 'Garlic', id: 2 },
+{ title: 'Apple', id: 3 },
+13
+
+Inside your component, use the map() function to transform an array of
+
+products into an array of <li> items:
+
+const ListItems = products.map(product =>
+<li key={product.id}>
+{product.title}
+</li>
+)5
+
+return (
+<ul>{listItems}</ul>
+
+)3
+
+Notice how <li> hasa key attribute. For each item in alist, you should pass a
+string or a number that uniquely identifies that item among its siblings. Usually,
+a key should be coming from your data, such as a database ID. React uses your
+
+keys to know what happened if you later insert, delete, or reorder the items.
+
+App.js % Download © X F
+A
+const products = [
+{ title: 'Cabbage', isFruit: false, id: 1 },
+{ title: 'Garlic', isFruit: false, id: 2 },
+{ title: 'Apple', isFruit: true, id: 3 },
+1;
+
+https://react.dev/learn 8/18
+3/22/26, 9:29 PM Quick Start — React
+
+>
+
+export default function ShoppingList() f{
+const ListItems = products.map(product =>
+<li
+key={product.id}
+style={{
+
+v Show more
+
+Responding to events
+
+You can respond to events by declaring event handler functions inside your
+
+components:
+
+>
+
+function MyButton() {
+function handleClick() {
+
+alert('You clicked me!');
+
+return (
+<button onClick={handleClick}>
+Click me
+
+https://react.dev/learn 9/18
+3/22/26, 9:29 PM Quick Start — React
+</button> A
+
+3
+
+Notice how onClick={handleClick} has no parentheses at the end! Do not call
+the event handler function: you only need to pass it down. React will call your
+
+event handler when the user clicks the button.
+
+Updating the screen
+
+Often, you’ll want your component to “remember” some information and
+display it. For example, maybe you want to count the number of times a button
+
+is clicked. To do this, add state to your component.
+
+First, import useState from React:
+
+import { useState } from 'react';
+
+Now you can declare a state variable inside your component:
+
+function MyButton() {
+const [count, setCount] = useState(0);
+
+I] ws
+
+You'll get two things from useState : the current state (count ), and the
+function that lets you update it ( setCount ). You can give them any names, but
+
+the convention is to write [something, setSomething] .
+
+The first time the button is displayed, count willbe © because you passed 0 to
+useState() . When you want to change state, call setCount() and pass the
+
+new value to it. Clicking this button will increment the counter:
+
+https://react.dev/learn 10/18
+3/22/26, 9:29 PM Quick Start — React
+
+function MyButton() {
+
+const [count, setCount] = useState(@);
+
+function handleClick() {
+
+setCount(count + 1);
+
+return (
+<button onClick={handleClick}>
+Clicked {count} times
+</button>
+
+)5
+
+React will call your component function again. This time, count willbe 1.Then
+
+it willbe 2.And soon.
+
+If you render the same component multiple times, each will get its own state.
+
+Click each button separately:
+
+App.js 4 Download © X FF
+
+a
+import { useState } from 'react';
+
+export default function MyApp() {
+return (
+<div>
+<hi>Counters that update separately</h1>
+<MyButton />
+<MyButton />
+</div>
+
+3
+v Show more
+
+https://react.dev/learn 11/18
+3/22/26, 9:29 PM Quick Start — React
+
+Notice how each button “remembers” its own count state and doesn’t affect
+
+other buttons.
+
+Using Hooks
+
+Functions starting with use are called Hooks. useState is a built-in Hook
+provided by React. You can find other built-in Hooks in the AP! reference. You
+
+can also write your own Hooks by combining the existing ones.
+
+Hooks are more restrictive than other functions. You can only call Hooks at the
+top of your components (or other Hooks). If you want to use useState ina
+
+condition or a loop, extract anew component and put it there.
+
+Sharing data between components
+
+In the previous example, each MyButten had its own independent count , and
+
+when each button was clicked, only the count for the button clicked changed:
+
+https://react.dev/learn 12/18
+3/22/26, 9:29 PM Quick Start — React
+
+MyApp MyApp
+
+[ [
+
+MyButton MyButton MyButton MyButton
+- +
++
+count | O count | 0 ( count | 1 ) count | O
+Initially, each MyButton’s The first MyButton updates its
+count stateis 0 count to 1
+
+However, often you’ll need components to share data and always update
+
+together.
+
+To make both MyButton components display the same count and update
+together, you need to move the state from the individual buttons “upwards” to
+
+the closest component containing all of them.
+
+In this example, itis MyApp:
+
+MyApp
+
+count | O
+
+ih
+f ]
+
+ep
+
+MyButton
+
+MyButton
+
+https://react.dev/learn 13/18
+3/22/26, 9:29 PM Quick Start — React
+
+Initially, MyApp ’s count state is On click, MyApp updates its
+0 and is passed down to both count state to 1 and passes it
+children down to both children
+
+Now when you click either button, the count in MyApp will change, which will
+change both of the counts in MyButton . Here’s how you can express this in
+
+code.
+
+First, move the state up from MyButton into MyApp:
+
+export default function MyApp() {
+const [count, setCount] = useState(@);
+
+function handleClick() {
+
+setCount(count + 1);
+
+return (
+<div>
+<hi>Counters that update separately</hi>
+<MyButton />
+<MyButton />
+</div>
+
+)5
+
+function MyButton() {
+
+// ... we're moving code from here ...
+
+Then, pass the state down from MyApp to each MyButton, together with the
+shared click handler. You can pass information to MyButton using the JSX curly
+
+braces, just like you previously did with built-in tags like <img>:
+
+https://react.dev/learn 14/18
+3/22/26, 9:29 PM Quick Start — React
+
+export default function MyApp() {
+
+const [count, setCount] = useState(@);
+
+function handleClick() {
+
+setCount(count + 1);
+
+}
+return (
+<div>
+<hi>Counters that update together</h1>
+<MyButton count={count} onClick={handleClick} />
+<MyButton count={count} onClick={handleClick} />
+</div>
+
+)5
+
+The information you pass down like this is called props. Now the MyApp
+component contains the count state and the handleClick event handler, and
+
+passes both of them down as props to each of the buttons.
+
+Finally, change MyButton to read the props you have passed from its parent
+
+component:
+
+function MyButton({ count, onClick }) {
+return (
+<button onClick={onClick}>
+Clicked {count} times
+</button>
+
+)5
+
+When you click the button, the onClick handler fires. Each button’s onClick
+prop was set to the handleClick function inside MyApp , so the code inside of it
+
+runs. That code calls setCount(count + 1) ,incrementing the count state
+
+https://react.dev/learn 15/18
+3/22/26, 9:29 PM Quick Start — React
+
+variable. The new count value is passed as a prop to each button, so they all
+
+show the new value. This is called “lifting state up”. By moving state up, you’ve
+
+shared it between components.
+
+App.js
+import { useState } from 'react';
+
+export default function MyApp() f{
+
+const [count, setCount] = useState(0) ;
+
+function handleClick() {
+
+setCount(count + 1);
+
+return (
+<div>
+
+<hl>Counters that update together</hi>
+
+v Show more
+
+Next Steps
+
+https://react.dev/learn
+
+4 Download © X
+
+4
+
+16/18
+3/22/26, 9:29 PM Quick Start — React
+
+By now, you know the basics of how to write React code!
+
+Check out the Tutorial to put them into practice and build your first mini-app
+with React.
+
+NEXT
+
+Tutorial: Tic-Tac-Toe
+
+2%}Meta Open Source
+
+Copyright © Meta Platforms, Inc
+
+uwu?
+
+Learn React API Reference
+Quick Start React APIs
+Installation React DOM APIs
+Describing the UI
+
+Adding Interactivity
+Managing State
+
+Escape Hatches
+
+Community More
+
+Code of Conduct Blog
+
+Meet the Team React Native
+Docs Contributors Privacy
+Acknowledgements Terms
+
+https://react.dev/learn
+
+17/8
+3/22/26, 9:29 PM Quick Start — React
+
+@OxX¥O
+
+https://react.dev/learn 18/18

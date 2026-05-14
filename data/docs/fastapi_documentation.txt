@@ -1,0 +1,765 @@
+3/22/26, 9:11 PM FastAPI
+
+@ FastAPI
+
+FastAPI framework, high performance, easy to learn, fast to code, ready for production
+
+python 3.10 | 3.11 | 3.12 | 3.13 | 3.14
+
+Documentation: htips://fastapi.tiangolo.com
+
+Source Code: htips://github.com/fastapi/fastapi 7
+
+FastAPI is a modern, fast (high-performance), web framework for building APIs with Python based
+on standard Python type hints.
+
+The key features are:
+
+¢ Fast: Very high performance, on par with NodeJS and Go (thanks to Starlette and Pydantic).
+One of the fastest Python frameworks available.
+
+¢ Fast to code: Increase the speed to develop features by about 200% to 300%. *
+e Fewer bugs: Reduce about 40% of human (developer) induced errors. *
+¢ Easy: Designed to be easy to use and learn. Less time reading docs.
+
+¢ Short: Minimize code duplication. Multiple features from each parameter declaration
+bugs.
+
+¢ Robust: Get production-ready code. With automatic interactive documentation.
+
+https://fastapi.tiangolo.com 1/21
+3/22/26, 9:11 PM FastAPI
+
+e Standards-based: Based on (and fully compatible with) the open standards for APIs:
+OpenAPI (previously known as Swagger) and JSON Schema &%.
+
+* estimation based on tests conducted by an internal development team, building production applications.
+
+Sponsors
+
+Keystone Sponsor
+
+Gold and Silver Sponsors
+
+Other sponsors Gi
+
+Opinions
+
+"[..] 'm using FastAPI a ton these days. [...] I'm actually planning to use it for all of my team's ML
+services at Microsoft. Some of them are getting integrated into the core Windows product and some
+Office products."
+
+Kabir Khan - Microsoft (ref) @
+
+"We adopted the FastAPI library to spawn a REST server that can be queried to obtain predictions.
+[for Ludwig]"
+
+Piero Molino, Yaroslav Dudin, and Sai Sumanth Miryala - Uber (ref) @
+
+"Netflix is pleased to announce the open-source release of our crisis management orchestration
+framework: Dispatch! [built with FastAPI]"
+
+Kevin Glisson, Marc Vilanova, Forest Monsen - Netflix (ref) @
+
+"I’m over the moon excited about FastAPI. It’s so fun!"
+
+Brian Okken - [Python Bytes](https://pythonbytes.fm/episodes/show/123/time-to-right-
+the-py-wrongs?time_in_sec=855) podcast host (ref) 7
+
+https://fastapi.tiangolo.com 2/21
+3/22/26, 9:11 PM FastAPI
+
+"Honestly, what you've built looks super solid and polished. In many ways, it's what | wanted Hug to be
+- it's really inspiring to see someone build that."
+
+Timothy Crosley - [Hug](https://github.com/hugapi/hug) creator (ref) 7
+
+"If you're looking to learn one modern framework for building REST APIs, check out FastAP! [...] It's
+fast, easy to use and easy to learn [...]'
+
+"We've switched over to FastAPI for our APIs [...] | think you'll like it [...]"
+
+Ines Montani - Matthew Honnibal - [Explosion Al](https://explosion.ai) founders - [spaCy]
+(https://spacy.io) creators (ref) @ - (ref) @
+
+"If anyone is looking to build a production Python API, | would highly recommend FastAPI. It is
+beautifully designed, simple to use and highly scalable, it has become a key component in our API
+first development strategy and is driving many automations and services such as our Virtual TAC
+Engineer."
+
+Deon Pillsbury - Cisco (ref)
+
+FastAPI mini documentary
+
+There's a FastAPI mini documentary ~ released at the end of 2025, you can watch it online:
+
+https://fastapi.tiangolo.com 3/21
+3/22/26, 9:11 PM FastAPI
+
+Typer, the FastAPI of CLIs
+
+Gad Typer
+
+Typer is FastAP''s little sibling. And it's intended to be the FastAPI of CLIs. == #7
+
+Requirements
+
+FastAPI stands on the shoulders of giants:
+
+* Starlette ~ for the web parts.
+
+e Pydantic @ for the data parts.
+
+Installation
+
+Create and activate a virtual environment 3 and then install FastAPI:
+
+https://fastapi.tiangolo.com 4/21
+3/22/26, 9:11 PM FastAPI
+
+Note: Make sure you put "fastapi[standard]" in quotes to ensure it works in all terminals.
+
+Example
+
+Create it
+
+Create a file main.py with:
+
+from fastapi import FastAPI
+app = FastAPI()
+@app. get ( ayo )
+
+def read_root():
+return {"Hello": "World"}
+
+@app.get("/items/{item_id}")
+def read_item(item_id: int, q: str | None = None):
+return {"item_id": item_id, "q": q}
+
+https://fastapi.tiangolo.com 5/21
+3/22/26, 9:11 PM FastAPI
+
+Or use async def... Vv
+
+If your code uses asyne / await,use async def:
+
+FastAPI
+
+app = FastAPI()
+
+.get("/")
+Oe
+{"Hello": "World"}
+
+.get("/items/{item_id}")
+(item_id: , q: | None = None):
+{"item_id": item_id, "q": q}
+
+Note:
+
+If you don't know, check the “In a hurry?" section about async and await in the docs
+
+Run it
+
+Run the server with:
+
+https://fastapi.tiangolo.com 6/21
+3/22/26, 9:11 PM FastAPI
+
+About the command fastapi dev... v
+
+The command fastapi dev reads your main.py file automatically, detects the FastAPI app in it,
+
+and starts a server using Uvicorn
+By default, fastapi dev will start with auto-reload enabled for local development.
+
+You can read more about it in the FastAP! CLI docs
+
+Check it
+Open your browser at htip://127.0.0.1:8000/items/5?q=somequery
+
+You will see the JSON response as:
+{ g 5, : "somequery"}
+
+You already created an API that:
+
+e Receives HTTP requests in the paths / and /items/{item_id}.
+
+https://fastapi.tiangolo.com 7/21
+3/22/26, 9:11 PM FastAPI
+
+e Both paths take GET operations (also known as HTTP methods).
+° The path /items/{item_id} has a path parameter item_id that should be an int.
+
+¢ The path /items/{item_id} has an optional str query parameter q.
+
+Interactive API docs
+
+Now go to http://127.0.0.1:8000/docs (.
+
+You will see the automatic interactive API documentation (provided by Swagger UI 7):
+
+https://fastapi.tiangolo.com 8/21
+3/22/26, 9:11 PM
+
+(Fast API - Swagger UI
+
+FastAPI
+
+< CS @12
+Fast API
+/openapi.json
+default
+GET /items/{item_id} Read Item Get
+Parameters Try it out
+Name Description
+item id * le?
+integer
+(path)
+q
+string
+(query)
+Responses
+Code Description Links
+[ applicationijson v |
+Controls Accept header.
+[ application/json vd }
+Example Value | Schema
+{
+"detail": [
+Rlec"s |[
+“string”
+
+Alternative API docs
+
+And now, go to http://127.0.0.1:8000/redoc @.
+
+You will see the alternative automatic documentation (provided by ReDoc ©):
+
+https://fastapi.tiangolo.com
+
+9/21
+3/22/26, 9:11 PM
+
+FastAPI
+
+i Fast API-ReDoc
+
+€ CS ®@ 127.0.0.1
+
+Q Search.
+Fast API (0.1.0)
+
+Download OpenAP! specification: | Download
+
+GSB Read Item Get
+
+Powered by
+
+umentat
+
+Read Item Get
+
+item_id
+
+required
+
+Responses
+
+‘v 200 Successful Response
+
+¥ 422 Validation Error
+
+Example upgrade
+Now modify the file main. py to receive a body from a PUT request.
+
+Declare the body using standard Python types, thanks to Pydantic.
+
+from fastapi import FastAPI
+| from pydantic import BaseModel
+
+https://fastapi.tiangolo.com
+
+10/21
+3/22/26, 9:11 PM FastAPI
+
+app = FastAPI()
+
+class Item(BaseModel):
+
+name: str
+
+price: float
+
+is_offer: bool | None = None
+
+@app.get("/")
+def read_root():
+return {"Hello": "World"}
+
+@app.get("/items/{item_id}")
+def read_item(item_id: int, q: str | None = None):
+return {"item_id": item_id, "q": q}
+
+@app.put("/items/{item_id}")
+
+def update_item(item_id: int, item: Item):
+
+return {"item_name": item.name, "item_id": item_id}
+
+The fastapi dev server should reload automatically.
+
+Interactive API docs upgrade
+Now go to http://127.0.0.1:8000/docs 7.
+
+° The interactive AP] documentation will be automatically updated, including the new body:
+
+https://fastapi.tiangolo.com
+
+>
+
+11/21
+3/22/26, 9:11 PM FastAPI
+
+(Fast API - Swagger UI
+
+€ CGC ®@ 127.0.0.1
+
+Fast API
+
+/openapi json
+
+default Vv
+
+— )
+| /items/{item_id} Read Item Get |
+
+PUT /items/{item_id} Save Item Put
+Parameters Try it out
+Name Description
+
+item id* required
+integer
+(path)
+
+Request body ‘**""*" application/json v ]
+
+Example Value Schema
+
+{
+
+"name": "string",
+“price”: 0,
+
+"is offer": true
+
+Responses
+
+Code Description Links
+
+¢ Click on the button "Try it out", it allows you to fill the parameters and directly interact with the
+API:
+
+https://fastapi.tiangolo.com 12/21
+3/22/26, 9:11 PM
+
+(Fast API - Swagger UI
+
+€ CS ®@ 127.0.0.1
+
+Fast API? ™
+
+/Jopenapi.json
+
+default
+
+FastAPI
+
+| /items/{item_id} Read Item Get
+
+item id* required
+integer
+(path)
+
+required
+
+Request body
+
+Edit Value Schema
+
+1234
+
+PUT /items/{item_id} Save Item Put
+Name Description
+
+application/json
+
+zal
+
+{
+“name”: "The item name",
+“price”: e,
+"is_offer": true
+
+[ Cancel al Reset l
+
+e Then click on the "Execute" button, the user interface will communicate with your API, send the
+
+parameters, get the results and show them on the screen:
+
+https://fastapi.tiangolo.com
+
+13/21
+3/22/26, 9:11 PM
+
+FastAPI
+
+(Fast API - Swagger UI
+
+a
+
+CGC ®@ 127.0.0.1
+
+Edit Value | Schema
+
+{
+"name": "The item name",
+“price”: 6,
+“is_offer": true
+
+[ Cancel } [ Reset }
+
+ca }
+
+Responses
+
+curl -X PUT “http://127.0.6.1:8000/items/1234" -H "accept: eppcatisa/j soa" -H "Content-Type: application/json"
+
+-d "{\"name\":\"The item name\",\"price\":0,\"is_offer\":true
+
+Request URL
+
+http: //127.6.06.1:8000/items/1234
+
+Server response
+
+Code Details
+
+a Response body
+
+{
+“item_name": "The item name",
+“item_id": 1234
+
+}
+
+Response headers
+
+content-Length: 44
+
+pantant_tuna. annliaantian siean
+
+Alternative API docs upgrade
+
+And now, go to http://127.0.0.1:8000/redoc @.
+
+¢ The alternative documentation will also reflect the new query parameter and body:
+
+https://fastapi.tiangolo.com
+
+14/21
+3/22/26, 9:11 PM FastAPI
+
+i Fast API-ReDoc
+
+€ CS ®@ 127.0.0.1
+
+Q Search.
+
+GSB Read R Ge
+stad Saath Save Item Put
+
+ESB Read Item Get
+
+GB Save Item Put item_id
+
+required
+application/json
+
+name
+
+required
+
+price
+required
+
+is_offer
+
+Responses
+
+vv 200 Successful Response
+
+¥v 422 Validation Error
+
+Request samples
+
+Payload
+
+Recap
+
+In summary, you declare once the types of parameters, body, etc. as function parameters.
+
+You do that with standard modern Python types.
+
+You don't have to learn a new syntax, the methods or classes of a specific library, etc.
+
+https://fastapi.tiangolo.com 15/21
+3/22/26, 9:11 PM
+
+FastAPI
+
+Just standard Python.
+
+For example, for an int:
+
+item_id: int
+
+or fora more complex Item model:
+
+item: Item
+
+..and with that single declaration you get:
+
+¢ Editor support, including:
+
+Completion.
+
+Type checks.
+
+e Validation of data:
+
+Automatic and clear errors when the data is invalid.
+
+Validation even for deeply nested JSON objects.
+
+¢ Conversion of input data: coming from the network to Python data and types. Reading from:
+
+Path parameters.
+Query parameters.
+Cookies.
+
+Headers.
+
+Forms.
+
+Files.
+
+Convert Python types (str, int, float, bool, List, etc).
+datetime objects.
+
+UUID objects.
+
+Database models.
+
+..and many more.
+
+e Automatic interactive API documentation, including 2 alternative user interfaces:
+
+e
+
+https://fastapi.tiangolo.com
+
+Swagger UI.
+
+16/21
+3/22/26, 9:11 PM FastAPI
+
+e ReDoc.
+
+Coming back to the previous code example, FastAPI will:
+
+¢ Validate that there is an item_id inthe path for GET and PUT requests.
+¢ Validate that the item_id is of type int for GET and PUT requests.
+e If itis not, the client will see a useful, clear error.
+
+¢ Check if there is an optional query parameter named q (as in
+http://127.0.0.1:8000/items/foo?q=somequery ) for GET requests.
+
+e« Asthe q parameter is declared with = None, it is optional.
+
+e Without the None it would be required (as is the body in the case with PUT ).
+¢ For PUT requests to /items/{item_id} , read the body as JSON:
+
+¢ Check that it has a required attribute name that should bea str.
+
+e Check that it has a required attribute price thathas to bea float.
+
+e Check that it has an optional attribute is_offer , that should be a bool, if present.
+
+e All this would also work for deeply nested JSON objects.
+¢ Convert from and to JSON automatically.
+*« Document everything with OpenAPI, that can be used by:
+e Interactive documentation systems.
+e Automatic client code generation systems, for many languages.
+
+¢ Provide 2 interactive documentation web interfaces directly.
+
+We just scratched the surface, but you already get the idea of how it all works.
+
+Try changing the line with:
+return {"item_name": item.name, "item_id": item_id}
+.. from:
+. "“item_name": item.name ...
+
+...to:
+
+https://fastapi.tiangolo.com
+
+17/21
+3/22/26, 9:11 PM FastAPI
+
+. "item_price": item.price ...
+
+..and see how your editor will auto-complete the attributes and know their types:
+
+": item id}
+
+Float
+
+For amore complete example including more features, see the
+Spoiler alert: the tutorial - user guide includes:
+
+¢ Declaration of parameters from other different places as: headers, cookies, form fields and
+files.
+
+¢ How to set validation constraints as maximum_length or regex.
+
+¢ Avery powerful and easy to use Dependency Injection system.
+
+¢ Security and authentication, including support for OAuth2 with JWT tokens and HTTP Basic
+auth.
+
+¢ More advanced (but equally easy) techniques for declaring deeply nested JSON models
+(thanks to Pydantic).
+
+¢ GraphQL integration with and other libraries.
+e Many extra features (thanks to Starlette) as:
+
+¢ WebSockets
+
+* extremely easy tests based on HTTPX and pytest
+
+e CORS
+
+https://fastapi.tiangolo.com 18/21
+3/22/26, 9:11 PM FastAPI
+
+¢ Cookie Sessions
+
+e ...and more.
+
+Deploy your app (optional)
+
+You can optionally deploy your FastAPI app to FastAPI Cloud ~, go and join the waiting list if you
+haven't. 47
+
+If you already have a FastAPI Cloud account (we invited you from the waiting list @), you can
+deploy your application with one command.
+
+bash
+
+That's it! Now you can access your app at that URL. “>
+
+About FastAPI Cloud
+
+FastAPI Cloud © is built by the same author and team behind FastAPI.
+
+It streamlines the process of building, deploying, and accessing an API with minimal effort.
+
+It brings the same developer experience of building apps with FastAPI to deploying them to the
+cloud. (&
+
+FastAPI Cloud is the primary sponsor and funding provider for the FastAPI and friends open source
+projects. “>
+
+Deploy to other cloud providers
+
+https://fastapi.tiangolo.com 19/21
+3/22/26, 9:11 PM FastAPI
+
+FastAPI is open source and based on standards. You can deploy FastAPI apps to any cloud
+provider you choose.
+
+Follow your cloud provider's guides to deploy FastAPI apps with them. &
+
+Performance
+
+Independent TechEmpower benchmarks show FastAPI applications running under Uvicorn as
+one of the fastest Python frameworks available ~, only below Starlette and Uvicorn themselves
+(used internally by FastAPI). (*)
+
+To understand more about it, see the section Benchmarks ©.
+
+Dependencies
+
+FastAPI depends on Pydantic and Starlette.
+
+standard Dependencies
+
+When you install FastAPI with pip install "fastapilstandard]" it comes with the standard
+group of optional dependencies:
+
+Used by Pydantic:
+* email-validator © - for email validation.
+Used by Starlette:
+
+¢ httpx @- Required if you want to use the TestClient .
+¢ jinja2 @ - Required if you want to use the default template configuration.
+
+* python-multipart  - Required if you want to support form ‘parsing”, with request. form() .
+
+Used by FastAPI:
+
+* uvicorn (%- for the server that loads and serves your application. This includes
+uvicorn[standard] , which includes some dependencies (e.g. uvloop ) needed for high
+performance serving.
+
+¢ fastapi-clilstandard] -to provide the fastapi command.
+
+e This includes fastapi-cloud-cli , which allows you to deploy your FastAPI application to
+FastAPI Cloud 17.
+
+https://fastapi.tiangolo.com 20/21
+3/22/26, 9:11 PM FastAPI
+
+Without standard Dependencies
+
+If you don't want to include the standard optional dependencies, you can install with
+
+pip install fastapi instead of pip install "fastapi[standard]".
+
+Without fastapi-cloud-cli
+
+If you want to install FastAPI with the standard dependencies but without the fastapi-cloud-cli,
+you can install with pip install "fastapi[standard-no-fastapi-cloud-cli]".
+
+Additional Optional Dependencies
+
+There are some additional dependencies you might want to install.
+
+Additional optional Pydantic dependencies:
+
+* pydantic-settings ~- for settings management.
+
+e pydantic-extra-types © - for extra types to be used with Pydantic.
+Additional optional FastAP! dependencies:
+
+¢ orjson @ - Required if you want to use ORJSONResponse .
+
+¢ ujson @ - Required if you want to use UJSONResponse .
+
+License
+
+This project is licensed under the terms of the MIT license.
+
+https://fastapi.tiangolo.com 21/21

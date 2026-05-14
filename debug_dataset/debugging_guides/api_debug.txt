@@ -1,0 +1,7 @@
+API Debugging Steps:
+
+- Check request payload
+- Validate authentication token
+- Inspect server logs
+- Test endpoint using Postman
+- Verify response codes
